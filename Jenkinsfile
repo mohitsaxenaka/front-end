@@ -3,10 +3,10 @@ pipeline{
     agent any
 
 // uncomment the following lines by removing /* and */ to enable
-    tools{
+   /* tools{
        NodeJS 'NodeJS 4.8.6' 
     }
-    
+    */
 
     stages{
         stage('one'){
@@ -18,16 +18,14 @@ pipeline{
         stage('two'){
             steps{
                 echo 'this is the test job'
-                sh 'npm install'
-		sh 'npm test'
+                sh 'npm test'
             }
         }
         stage('three'){
             steps{
                 echo 'this is the packaging job'
-                sh 'npm install'
-		sh 'npm run package'
-		archiveArtifacts '**/target/*.jar'
+                sh 'npm run package'
+		archiveArtifacts '**/distribution/*.zip'
             }
         }
     }
